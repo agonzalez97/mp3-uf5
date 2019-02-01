@@ -13,8 +13,13 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="344.0">
                <children>
-                  <JFXButton fx:id="btnCerca" layoutX="22.0" layoutY="32.0" onAction="#onClickBtnMenu" text="Cerca" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                  <JFXButton fx:id="btnLlista" layoutX="33.0" layoutY="63.0" onAction="#onClickBtnMenu" text="Llista" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <VBox layoutY="7.0" prefHeight="598.0" prefWidth="76.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton fx:id="btnLoad" layoutX="13.0" layoutY="7.0" maxWidth="1.7976931348623157E308" onAction="#onClickLoad" text="Load" />
+                        <JFXButton fx:id="btnCerca" layoutY="38.0" maxWidth="1.7976931348623157E308" onAction="#onClickBtnMenu" text="Cerca" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <JFXButton fx:id="btnLlista" layoutX="33.0" layoutY="63.0" maxWidth="1.7976931348623157E308" onAction="#onClickBtnMenu" text="Llista" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
           <AnchorPane fx:id="paneDret" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

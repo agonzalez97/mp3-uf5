@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    public String csvFile = "src/hospital/data/Hospital.csv";
+    public String csvFile = null; //"src/hospital/data/Hospital.csv";
     @FXML AnchorPane paneDret;
 
     @Override
@@ -28,6 +28,7 @@ public class Controller implements Initializable {
            // ListView lsvLlista = new ListView();
             AnchorPane anchorPaneLlista = null;
             try {
+
                 anchorPaneLlista = FXMLLoader.load(getClass().getResource("../fxml/llista.fxml"));
 
             } catch (IOException e) {
@@ -43,4 +44,7 @@ public class Controller implements Initializable {
     }
 
 
+    public void onClickLoad(ActionEvent actionEvent) {
+
+    }
 }
