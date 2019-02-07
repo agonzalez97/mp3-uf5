@@ -38,6 +38,7 @@ public class Hospital {
             e.printStackTrace();
         }
 
+        //Retornem la llista de valors
         return map_pacients.values();
     }
 

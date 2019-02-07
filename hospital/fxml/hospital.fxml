@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.*?>
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospital.control.Controller">
    <children>
       <SplitPane dividerPositions="0.1" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -15,7 +11,6 @@
                <children>
                   <VBox layoutY="7.0" prefHeight="598.0" prefWidth="76.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <JFXButton fx:id="btnLoad" layoutX="13.0" layoutY="7.0" maxWidth="1.7976931348623157E308" onAction="#onClickLoad" text="Load" />
                         <JFXButton fx:id="btnCerca" layoutY="38.0" maxWidth="1.7976931348623157E308" onAction="#onClickBtnMenu" text="Cerca" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <JFXButton fx:id="btnLlista" layoutX="33.0" layoutY="63.0" maxWidth="1.7976931348623157E308" onAction="#onClickBtnMenu" text="Llista" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                      </children>

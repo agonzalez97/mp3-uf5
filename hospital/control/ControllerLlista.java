@@ -1,44 +1,46 @@
 package hospital.control;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import hospital.model.Hospital;
 import hospital.model.Pacient;
-import hospital.model.Persona;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ControllerLlista implements Initializable {
 
     private String csvFile = null;
-    List<Pacient> p = new ArrayList<>();
+    private List<Pacient> p = new ArrayList<>();
+    private ObservableList<Pacient> data;
 
     @FXML TableView<Pacient> tablePacients;
-    @FXML Button btnLoadFile;
-
-
+    @FXML JFXButton btnLoadFile;
+    @FXML JFXTextField txtDNI, txtNom, txtCognoms;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        data = FXCollections.observableArrayList();
         if(csvFile == null) {
             btnLoadFile.setText("Click per carregar CSV");
         }else {
             setTableView();
         }
-
     }
 
     private void setTableView() {
@@ -63,8 +65,8 @@ public class ControllerLlista implements Initializable {
 
         tablePacients.getColumns().addAll(DNI, Nom, Cognoms, DataNaix, Genre, Telefon, pes, Alçada);
 
-        ObservableList<Pacient> data = FXCollections.observableArrayList();
-        data.add(new Pacient("111", "n", "co", LocalDate.of(2000, 12, 12), Persona.Genere.HOME, "55555", 5.4f, 100));
+
+        //data.add(new Pacient("111", "n", "co", LocalDate.of(2000, 12, 12), Persona.Genere.HOME, "55555", 5.4f, 100));
         loadData();
         data.addAll(p);
         tablePacients.setItems(data);
@@ -87,6 +89,36 @@ public class ControllerLlista implements Initializable {
             btnLoadFile.setText("Loaded");
         }else {
             btnLoadFile.setText("File is loaded");
+        }
+    }
+
+    public void btnCerca(ActionEvent event) {
+        List<Pacient> pacients = p.stream().filter(pacient -> pacient.getDNI().equals(txtDNI.getText())).collect(Collectors.toList());
+        if(txtDNI.getText().equals("")) {
+            updateTable(p);
+        }else updateTable(pacients);
+    }
+
+    private void updateTable(List<Pacient> pacients) {
+        data.clear();
+        data.addAll(pacients);
+        tablePacients.setItems(data);
+    }
+
+    public void changeText(KeyEvent keyEvent) {
+        data.clear();
+        List<Pacient> pacients = p.stream()
+                .filter(pacient -> pacient.getNom().contains(txtNom.getText()))
+                .filter((pacient -> pacient.getCognoms().contains(txtCognoms.getText())))
+                .collect(Collectors.toList());
+        data.addAll(pacients);
+        tablePacients.setItems(data);
+    }
+
+    public void clickTable(MouseEvent event) {
+        //Cal verificar si hi ha alguna selecció feta al fer doble click
+        if (event.getClickCount() == 2 && !tablePacients.getSelectionModel().isEmpty()){
+            System.out.println(tablePacients.getSelectionModel().getSelectedItem().getNom());
         }
     }
 }
