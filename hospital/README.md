@@ -6,6 +6,7 @@ Només és a tall d'exemple per veure
  com **carregar un fitxer FXML** dins una altre  
  i una **cerca** dels pacients amb **streams** dins un **InputText** que canvia 
 
- ![alt text](https://github.com/elpuig-dam/mp3-uf5/hospital/Captura_Hospital.png)
+ ![Captura](https://github.com/elpuig-dam/mp3-uf5/blob/master/hospital/Captura_Hospital.png)
+ 
  
 
