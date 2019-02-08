@@ -1,10 +1,11 @@
-### ATECIÓ: Aquest codi conté errors!!!
+### ATECIÓ: Aquest codi pot contenir errors de disseny!!!
 
 Només és a tall d'exemple per veure  
  com funciona un **TableView**,  
  un **FileChooser**,  
  com **carregar un fitxer FXML** dins una altre  
  i una **cerca** dels pacients amb **streams** dins un **InputText** que canvia 
- 
+
+ ![alt text](https://github.com/elpuig-dam/mp3-uf5/hospital/Captura_Hospital.png)
  
 

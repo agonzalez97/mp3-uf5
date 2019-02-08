@@ -4,11 +4,13 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import hospital.model.Hospital;
 import hospital.model.Pacient;
+import hospital.model.Persona;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,9 +20,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ControllerLlista implements Initializable {
@@ -32,6 +32,7 @@ public class ControllerLlista implements Initializable {
     @FXML TableView<Pacient> tablePacients;
     @FXML JFXButton btnLoadFile;
     @FXML JFXTextField txtDNI, txtNom, txtCognoms;
+    @FXML PieChart idPieChart;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -93,7 +94,9 @@ public class ControllerLlista implements Initializable {
     }
 
     public void btnCerca(ActionEvent event) {
-        List<Pacient> pacients = p.stream().filter(pacient -> pacient.getDNI().equals(txtDNI.getText())).collect(Collectors.toList());
+        List<Pacient> pacients = p.stream()
+                .filter(pacient -> pacient.getDNI().equals(txtDNI.getText()))
+                .collect(Collectors.toList());
         if(txtDNI.getText().equals("")) {
             updateTable(p);
         }else updateTable(pacients);
@@ -120,5 +123,24 @@ public class ControllerLlista implements Initializable {
         if (event.getClickCount() == 2 && !tablePacients.getSelectionModel().isEmpty()){
             System.out.println(tablePacients.getSelectionModel().getSelectedItem().getNom());
         }
+    }
+
+    /**
+     * Exemple de PieChart
+     * Quants pacients homes i quants pacients dones hi ha
+     * @param event
+     */
+    public void btnChart(ActionEvent event) {
+        idPieChart.getData().clear();
+        long dones = p.stream()
+                        .filter(pacient -> pacient.getGenere()== Persona.Genere.DONA)
+                        .count();
+        long homes = p.stream()
+                .filter(pacient -> pacient.getGenere()== Persona.Genere.HOME)
+                .count();
+        idPieChart.setTitle("Gènere");
+        idPieChart.getData().add(new PieChart.Data(Persona.Genere.DONA.toString(),dones));
+        idPieChart.getData().add(new PieChart.Data(Persona.Genere.HOME.toString(),homes));
+
     }
 }
