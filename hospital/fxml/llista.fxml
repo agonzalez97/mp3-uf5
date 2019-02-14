@@ -42,7 +42,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab fx:id="tabDades" text="Dades">
+                      <Tab fx:id="tabDades" onSelectionChanged="#loadChart" text="Dades">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>

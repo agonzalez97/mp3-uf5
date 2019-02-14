@@ -8,6 +8,7 @@ import hospital.model.Persona;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
@@ -131,10 +132,18 @@ public class ControllerLlista implements Initializable {
      * @param event
      */
     public void btnChart(ActionEvent event) {
+        setChart();
+    }
+
+    public void loadChart(Event event) {
+        setChart();
+    }
+
+    private void setChart() {
         idPieChart.getData().clear();
         long dones = p.stream()
-                        .filter(pacient -> pacient.getGenere()== Persona.Genere.DONA)
-                        .count();
+                .filter(pacient -> pacient.getGenere()== Persona.Genere.DONA)
+                .count();
         long homes = p.stream()
                 .filter(pacient -> pacient.getGenere()== Persona.Genere.HOME)
                 .count();
