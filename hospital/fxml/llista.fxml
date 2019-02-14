@@ -15,22 +15,47 @@
          <children>
             <TableView fx:id="tablePacients" onMouseClicked="#clickTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <JFXButton fx:id="btnLoadFile" maxWidth="1.7976931348623157E308" onAction="#clickLoadFile" text="Load" />
-            <HBox spacing="5.0">
+            <AnchorPane>
                <children>
-                  <JFXTextField fx:id="txtDNI" labelFloat="true" maxWidth="1.7976931348623157E308" promptText="DNI" />
-                  <JFXTextField fx:id="txtNom" labelFloat="true" maxWidth="1.7976931348623157E308" onKeyTyped="#changeText" promptText="Nom" />
-                  <JFXTextField fx:id="txtCognoms" labelFloat="true" maxWidth="1.7976931348623157E308" onKeyTyped="#changeText" promptText="Cognoms" />
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" onAction="#btnCerca" text="Cerca" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" />
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" onAction="#btnChart" text="Chart" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" />
+                  <TabPane fx:id="TabPane" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                      <Tab fx:id="tabFiltre" text="Filtre">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox layoutX="-15.0" layoutY="-11.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <JFXTextField fx:id="txtNom" labelFloat="true" maxWidth="1.7976931348623157E308" onKeyTyped="#changeText" promptText="Nom" />
+                                          <JFXTextField fx:id="txtCognoms" labelFloat="true" maxWidth="1.7976931348623157E308" onKeyTyped="#changeText" promptText="Cognoms" />
+                                          <JFXTextField fx:id="txtDNI" labelFloat="true" maxWidth="1.7976931348623157E308" promptText="DNI" />
+                                          <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" onAction="#btnCerca" text="Cerca" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" HBox.hgrow="ALWAYS">
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab fx:id="tabDades" text="Dades">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <PieChart fx:id="idPieChart" prefHeight="255.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0" />
+                                    <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" onAction="#btnChart" text="Chart" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
                </children>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets top="5.0" />
-               </padding>
-            </HBox>
-            <PieChart fx:id="idPieChart" />
+            </AnchorPane>
          </children>
       </VBox>
    </children>
